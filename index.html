@@ -155,6 +155,19 @@
           document.getElementById("reservation-form").reset();
         });
 
+      // Handle car form submission
+      document
+        .getElementById("car-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const carName = document.getElementById("car-name").value;
+          const carBrand = document.getElementById("car-brand").value;
+          const docRef = doc(db, "automoviles", carName);
+          await setDoc(docRef, { name: carName, brand: carBrand });
+          document.getElementById("car-form").reset();
+          populateCars(); // Repopulate cars after a new one is added
+        });
+
       // Handle brand form submission
       document
         .getElementById("brand-form")
@@ -165,6 +178,20 @@
           await setDoc(docRef, { name: brandName });
           document.getElementById("brand-form").reset();
           populateBrands(); // Repopulate brands after a new one is added
+        });
+
+      // Handle user form submission
+      document
+        .getElementById("user-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const userName = document.getElementById("user-name").value;
+          const userSurname = document.getElementById("user-surname").value;
+          const userId = document.getElementById("user-id").value;
+          const docRef = doc(db, "usuarios", userId);
+          await setDoc(docRef, { name: userName, surname: userSurname });
+          document.getElementById("user-form").reset();
+          populateUsers(); // Repopulate users after a new one is added
         });
 
       // Call the populate functions
