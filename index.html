@@ -13,195 +13,35 @@
     />
   </head>
   <body>
-    <!-- Form for brands -->
     <div class="container">
-      <h2>Add Brand</h2>
-      <form id="brand-form">
-        <div class="mb-3">
-          <label for="brand-name" class="form-label">Brand Name</label>
-          <input type="text" class="form-control" id="brand-name" required />
+      <div class="d-flex justify-content-end m-4">
+        <div class="btn-group m-1" role="group" aria-label="Navigation Buttons">
+          <a href="add-brand.html" class="btn btn-primary m-1">Add Brand</a>
+          <a href="add-cars.html" class="btn btn-primary m-1">Add Cars</a>
+          <a href="add-reservation.html" class="btn btn-primary m-1"
+            >Add Reservation</a
+          >
+          <a href="add-users.html" class="btn btn-primary m-1">Add Users</a>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-
-    <!-- Form for cars -->
-    <div class="container">
-      <h2>Add Car</h2>
-      <form id="car-form">
-        <div class="mb-3">
-          <label for="car-name" class="form-label">Car Name</label>
-          <input type="text" class="form-control" id="car-name" required />
-        </div>
-        <div class="mb-3">
-          <label for="car-brand" class="form-label">Brand</label>
-          <select class="form-select" id="car-brand" required></select>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-
-    <!-- Form for users -->
-    <div class="container">
-      <h2>Add User</h2>
-      <form id="user-form">
-        <div class="mb-3">
-          <label for="user-name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="user-name" required />
-        </div>
-        <div class="mb-3">
-          <label for="user-surname" class="form-label">Surname</label>
-          <input type="text" class="form-control" id="user-surname" required />
-        </div>
-        <div class="mb-3">
-          <label for="user-id" class="form-label">ID</label>
-          <input type="text" class="form-control" id="user-id" required />
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-
-    <!-- Form for reservations -->
-    <div class="container">
-      <h2>Add Reservation</h2>
-      <form id="reservation-form">
-        <div class="mb-3">
-          <label for="reservation-car" class="form-label">Car</label>
-          <select class="form-select" id="reservation-car" required></select>
-        </div>
-        <div class="mb-3">
-          <label for="reservation-user" class="form-label">User</label>
-          <select class="form-select" id="reservation-user" required></select>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </div>
+      <table id="car-table" class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Car</th>
+            <th>Brand</th>
+            <th>Reserved</th>
+            <th>Reserved By</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be populated here -->
+        </tbody>
+      </table>
     </div>
 
     <script type="module" src="/js/firebase.js"></script>
     <script type="module" src="/js/populate.js"></script>
     <script type="module" src="/js/formHandlers.js"></script>
     <script type="module" src="/js/main.js"></script>
-    <!--  <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import {
-        getFirestore,
-        doc,
-        setDoc,
-        getDocs,
-        collection,
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyDE_G6rXST9WRqHgkYeRGxCloxthsnK__Y",
-        authDomain: "autos-a2c3b.firebaseapp.com",
-        projectId: "autos-a2c3b",
-        storageBucket: "autos-a2c3b.appspot.com",
-        messagingSenderId: "723960148448",
-        appId: "1:723960148448:web:91183bd51325568622bb85",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-      // Populate car select
-      const populateCars = async () => {
-        const querySnapshot = await getDocs(collection(db, "automoviles"));
-        const carSelect = document.getElementById("reservation-car");
-        querySnapshot.forEach((doc) => {
-          const option = document.createElement("option");
-          option.text = doc.id;
-          option.value = doc.id;
-          carSelect.add(option);
-        });
-      };
-
-      // Populate user select
-      const populateUsers = async () => {
-        const querySnapshot = await getDocs(collection(db, "usuarios"));
-        const userSelect = document.getElementById("reservation-user");
-        querySnapshot.forEach((doc) => {
-          const option = document.createElement("option");
-          option.text = doc.id;
-          option.value = doc.id;
-          userSelect.add(option);
-        });
-      };
-
-      // Populate brands select
-      const populateBrands = async () => {
-        const querySnapshot = await getDocs(collection(db, "brands"));
-        const brandSelect = document.getElementById("car-brand");
-        querySnapshot.forEach((doc) => {
-          const option = document.createElement("option");
-          option.text = doc.id;
-          option.value = doc.id;
-          brandSelect.add(option);
-        });
-      };
-
-      // Handle reservation form submission
-      document
-        .getElementById("reservation-form")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const reservationCar = document.getElementById("reservation-car")
-            .value;
-          const reservationUser = document.getElementById("reservation-user")
-            .value;
-          const docRef = doc(
-            db,
-            "reservado",
-            `${reservationUser}-${reservationCar}`
-          );
-          await setDoc(docRef, { car: reservationCar, user: reservationUser });
-          document.getElementById("reservation-form").reset();
-        });
-
-      // Handle car form submission
-      document
-        .getElementById("car-form")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const carName = document.getElementById("car-name").value;
-          const carBrand = document.getElementById("car-brand").value;
-          const docRef = doc(db, "automoviles", carName);
-          await setDoc(docRef, { name: carName, brand: carBrand });
-          document.getElementById("car-form").reset();
-          populateCars(); // Repopulate cars after a new one is added
-        });
-
-      // Handle brand form submission
-      document
-        .getElementById("brand-form")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const brandName = document.getElementById("brand-name").value;
-          const docRef = doc(db, "brands", brandName);
-          await setDoc(docRef, { name: brandName });
-          document.getElementById("brand-form").reset();
-          populateBrands(); // Repopulate brands after a new one is added
-        });
-
-      // Handle user form submission
-      document
-        .getElementById("user-form")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const userName = document.getElementById("user-name").value;
-          const userSurname = document.getElementById("user-surname").value;
-          const userId = document.getElementById("user-id").value;
-          const docRef = doc(db, "usuarios", userId);
-          await setDoc(docRef, { name: userName, surname: userSurname });
-          document.getElementById("user-form").reset();
-          populateUsers(); // Repopulate users after a new one is added
-        });
-
-      // Call the populate functions
-      populateCars();
-      populateUsers();
-      populateBrands();
-    </script> -->
   </body>
 </html>
