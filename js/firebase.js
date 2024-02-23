@@ -2,10 +2,12 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
   getFirestore,
-  doc,
-  setDoc,
-  getDocs,
   collection,
+  getDocs,
+  doc,
+  deleteDoc,
+  setDoc,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -22,4 +24,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export { app, db, doc, setDoc, getDocs, collection };
+export { app, db, doc, setDoc, getDocs, collection, deleteDoc, updateDoc };
