@@ -18,7 +18,7 @@ export async function populateUsers() {
   const userSelect = document.getElementById("reservation-user");
   usersSnapshot.forEach((doc) => {
     const option = document.createElement("option");
-    option.text = doc.id;
+    option.text = doc.data().name;
     option.value = doc.id;
     userSelect.add(option);
   });
