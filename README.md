@@ -3,14 +3,11 @@
 <h4>Sistema para la Gestión y Control del seguiento del Servicio Comunitario en el Área de Ingeniería de Sistemas UNERG. </h4>
 
 - 1.1  Instalación de **WSL** [DOCS](https://learn.microsoft.com/es-es/windows/wsl/install)
-<br/>
 
 - 1.2  Instalación de la distribución: para este ejemplo se utilizó Ubuntu 22.04.3 LTS [DOCS](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
-<br/>
 
 - 1.3  Instalar **Docker** tanto en Windows como en Linux (WSL) [DOCS](https://docs.docker.com/engine/install/ubuntu/)
     
-    <br/>
     <details>
     <summary>Instalación de Docker</summary>
 
@@ -25,10 +22,8 @@
     ```
     </details>
     
-    <br/>
-    
     **NOTA** Asegúrate de que la opción "Enable integration with my default WSL distro" (Habilitar integración con mi distro WSL predeterminada) esté seleccionada.
-    <br/>
+  
     Docker Desktop (Windows) > Configuración > Resources > Enable integration with my default WSL distro.
 
 - 1.4  Instalación de **DDEV** tanto en Windows como en Linux (WSL), puedes consultar [DOCS](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/) para instalarlo en el sistema operativo que estés usando.
