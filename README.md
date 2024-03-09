@@ -2,7 +2,7 @@
 
 <h4>Sistema para la Gestión y Control del seguiento del Servicio Comunitario en el Área de Ingeniería de Sistemas UNERG. </h4>
 
-- 1.1  Instalación de **WSL** [DOCS](https://learn.microsoft.com/es-es/windows/wsl/install)
+- 1.1  Instalación de **WSL** [STORE](https://learn.microsoft.com/es-es/windows/wsl/install)
 
 - 1.2  Instalación de la distribución: para este ejemplo se utilizó Ubuntu 22.04.3 LTS [DOCS](https://www.microsoft.com/store/productId/9PDXGNCFSCZV?ocid=pdpshare)
 
