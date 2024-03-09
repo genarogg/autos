@@ -28,7 +28,6 @@
 
 - 1.4  Instalación de **DDEV** tanto en Windows como en Linux (WSL), puedes consultar [DOCS](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/) para instalarlo en el sistema operativo que estés usando.
 
-    <br/>
     <details>
     <summary>Instalación de DDEV</summary>
 
@@ -44,7 +43,6 @@
     sudo apt install -y ddev
     ```
     </details>
-    <br/>
 
 **Llegados a este punto ya tienes tu entorno de desarrollo configurado (recomendamos reiniciar la pc), sin embargo aún toca configurar algunas cosas del proyecto**
 
